@@ -32,6 +32,7 @@ shinyUI(pageWithSidebar(
   mainPanel(
     h3(textOutput("caption")),
     plotOutput("mpgPlot"),
+    h4(textOutput("Label")),
     verbatimTextOutput("summary")
   )
 ))

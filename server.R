@@ -17,6 +17,12 @@ shinyServer(function(input, output) {
     formulaText()
   })
   
+  #Caption for lineair regression summary box
+  output$Label <- renderText({ 
+    if(input$regression==TRUE)
+      "Summary"
+  })
+  
   #Compute the linear regression it is shared by the output$summary expression
   output$summary <- renderPrint({
     if(input$regression==TRUE)
