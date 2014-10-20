@@ -6,8 +6,8 @@ data(mtcars)
 # Define server logic required to plot various variables against mpg
 shinyServer(function(input, output) {
   
-  # Compute the forumla text in a reactive expression since it is 
-  # shared by the output$caption and output$mpgPlot expressions
+  # Compute the formula text in a reactive expression since it is 
+  # shared by the output$caption expression
   formulaText <- reactive({
     paste("mpg ~", input$variable)
   })
@@ -17,11 +17,7 @@ shinyServer(function(input, output) {
     formulaText()
   })
   
-  #Cumpute the linear regression it is shared by the output$regression expressions
-  #regressionText <- reactive({
-  #  ""
-  #})
-  
+  #Compute the linear regression it is shared by the output$summary expression
   output$summary <- renderPrint({
     if(input$regression==TRUE)
     {
@@ -31,8 +27,8 @@ shinyServer(function(input, output) {
     }
   })
    
-  # Generate a plot of the requested variable against mpg and only 
-  # include outliers if requested
+  # Generate a scatter plot of the requested variable against mpg and  
+  # display lineair regression in case of selected checkbox.
   output$mpgPlot <- renderPlot({
     if (input$variable == "am")
     { 

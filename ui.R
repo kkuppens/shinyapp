@@ -4,10 +4,10 @@ library(shiny)
 shinyUI(pageWithSidebar(
   
   # Application title
-  headerPanel("Simple Lineair regression, predicting Miles Per Gallon"),
+  headerPanel("Simple Lineair Regression Analysis, Miles Per Gallon"),
   
   # Sidebar with controls to select the variable to plot against mpg
-  # and to specify whether outliers should be included
+  # and with checkbox for displaying lineair regression information.
   sidebarPanel(
     selectInput("variable", "Predictor:",
                 list("Cylinders" = "cyl", 
@@ -23,8 +23,9 @@ shinyUI(pageWithSidebar(
     
     checkboxInput("regression", "Show Lineair regression line and information", FALSE),
 
-    helpText('Note: For the mtcars data, we can select variables (predictor) to show simple scatter plot and lineair regression against the mpg variable (outcome);
-             the scatter plot itself provides insight into the correlation of the selected variable against mpg. To see the lineair regression line and a summary click on the checkbox above.')
+    helpText('Note: For the mtcars data, select a variable (predictor) to show simple scatter plot against the fixed `mpg` variable. 
+             The scatter plot provides insight into the strenght of the correlation with `mpg`. To see the lineair regression line and 
+             a lineair regression summary (coefficients) click on the checkbox above.')
   ),
   
   # Show the caption and plot of the requested variable against mpg
