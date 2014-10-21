@@ -12,6 +12,11 @@ shinyServer(function(input, output) {
     paste("mpg ~", input$variable)
   })
   
+  #for output of the first 5 rows mtcars dataset in the Documentation tab
+  output$documentation <- renderPrint({
+    head(mtcars,5)
+  })
+  
   # Return the formula text for printing as a caption
   output$caption <- renderText({
     formulaText()
